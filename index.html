@@ -1,17 +1,58 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Geers Hub Portal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Serviceware Knowledge Widget Test</title>
+
+  <!-- Serviceware Knowledge Loader -->
+  <script
+    async
+    src="https://tele.knowledge.serviceware.cloud/sabio/services/widget/loader/?id=sw-knowledge-loader&token=iTKyOA%2B%2BB4hNGa9m03cFf7RBdjLGCJWF99Br%2BHOHbh9m3U%2Ff6vtYZPnY7%2BQPqink0EuJg1ftPsCLnccRSPMdDUyeDZjoUNrAGes2FoUrzpY%3D">
+  </script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 24px;
+    }
+  </style>
 </head>
+
 <body>
 
-    <h1>Geers Hub Portal</h1>
-    <p>Internal Knowledge & Service Portal</p>
+  <h1>Serviceware Knowledge – Widget Testseite</h1>
 
-    <!-- Serviceware Widget -->
-    <script async
-    src="https://tele.knowledge.serviceware.cloud/sabio/services/widget/loader/?id=YOUR_WIDGET_ID"></script>
+  <sw-knowledge-search
+    group="0"
+    react-on-events="true"
+    allow-config-edit="false"
+    raise-events="true"
+    support-browser-history="true"
+    auto-dialog="false"
+    dialog-size="auto"
+    use-api-key-connection="true"
+    readonly="false"
+    show-suggestions="true"
+    suggestion-mode="text"
+    open-selected-suggestion-as-text="false"
+    suggestion-min-chars="0"
+    max-suggestions="10"
+    debounce="600"
+    search-provider="default"
+    limit="null"
+    visible="true"
+    filter="[]"
+    leading-filters="false"
+    view-mode="default">
+  </sw-knowledge-search>
 
 </body>
 </html>
