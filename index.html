@@ -31,28 +31,22 @@
   <h1>Serviceware Knowledge – Widget Testseite</h1>
 
   <!-- Loader (1x pro Seite) -->
-<script async 
-src="https://tele.knowledge.serviceware.cloud/sabio/services/widget/loader/?id=swknowledgeloader&token=iTKyOA%2B%2BB4hNGa9m03cFf7RBdjLGCJWF99Br%2BHOHbh9m3U%2Ff6vtYZPnY7%2BQPqink
-0EuJg1ftPsCLnccRSPMdDUyeDZjoUNrAGes2FoUrzpY%3D"></script>
-<!-- Layout -->
-<div style="display:flex; gap:16px;">
- <div style="flex:0 0 320px;">
- <sw-knowledge-tree group="0" react-on-events="true" allow-config-edit="false" 
-raise-events="true" support-browser-history="true" auto-dialog="false" dialogsize="auto" use-api-key-connection="true" readonly="false" show-root="false" allowselection-on-nodes-with-children="false" max-depth="null" view-mode="tree" navigate-onclick="true" bordered-grid="false" show-line="false" use-as-filter-only="false" reacton-filter="false" use-navigation="false" load-navigation-url="true" url="/" paramname="articleId" opened-node-icon="expand_more" closed-node-icon="chevron_right"> </swknowledge-tree>
- </div>
- <div style="flex:1 1 auto;">
- <sw-knowledge-search group="0" react-on-events="true" allow-config-edit="false" 
-raise-events="true" support-browser-history="true" auto-dialog="false" dialogsize="auto" use-api-key-connection="true" readonly="false" show-suggestions="true" 
-suggestion-mode="text" open-selected-suggestion-as-text="false" suggestion-minchars="0" max-suggestions="10" debounce="600" search-provider="default" limit="null" 
-visible="true" filter="[]" leading-filters="false" view-mode="default"> </sw-knowledgesearch>
- <div style="margin-top:16px;">
- <sw-knowledge-detail group="0" react-on-events="true" allow-config-edit="false" 
-raise-events="true" support-browser-history="true" auto-dialog="false" dialogsize="auto" use-api-key-connection="true" readonly="false" initial-text-ids="[]" 
-single-expand="false" expandable="true" expanded="true" hide-title="false" auto-expandfoldouts="false" show-path="true" show-attachments="true" show-attachments-asmenu="false" load-styles="true" highlight="true" view-mode="default" use-auth-tokenfor-documents="false" check-host-for-internal-links="true" link-fallback="false" allowrating="false" rating-label="defaultRatingLabel" use-navigation="false" paramname="articleId" allow-share-on-text="false" allow-share-all="false" sharetargets="[&#34;facebook&#34;,&#34;twitter&#34;,&#34;mail&#34;,&#34;copyToClipboard&#34;
-]"> </sw-knowledge-detail>
- </div>
- </div>
-</div>
+
+  <div style="display:flex; gap:16px;">
+
+    <div style="flex:0 0 320px;">
+      <sw-knowledge-tree group="0" react-on-events="true" raise-events="true"></sw-knowledge-tree>
+    </div>
+
+    <div style="flex:1;">
+      <sw-knowledge-search group="0" react-on-events="true" raise-events="true"></sw-knowledge-search>
+
+      <div style="margin-top:16px;">
+        <sw-knowledge-detail group="0" react-on-events="true" raise-events="true"></sw-knowledge-detail>
+      </div>
+
+    </div>
+  </div>
 
 
   
