@@ -22,25 +22,22 @@
       margin-bottom: 20px;
     }
 
-    /* 🔥 Gesamt-Layout zentriert */
     .page-wrapper {
       display: flex;
-      justify-content: center;   /* zentriert alles */
+      justify-content: center;   /* zentrieren */
     }
 
-    /* 🔥 2-Spalten Container */
     .grid {
       display: flex;
       gap: 40px;                /* Abstand zwischen den Spalten */
       align-items: flex-start;
     }
 
-    /* 🔥 Jede Spalte */
     .column {
       width: 564px;
     }
 
-    /* 🔲 Widget Box (dein Kasten) */
+    /* Widget Box*/
     .widget-box {
       width: 564px;
       max-height: 600px;
@@ -70,7 +67,7 @@
       display: block;
     }
 
-    /* rechte Spalte nur Platzhalter */
+    /* Platzhalter rechts*/
     .placeholder {
       width: 564px;
       height: 600px;
@@ -88,24 +85,70 @@
   <div class="page-wrapper">
     <div class="grid">
 
-      <!-- 🔵 LINKE SPALTE -->
+      <!-- Linke Spalte -->
       <div class="column">
 
         <div class="widget-box">
 
           <div class="search-area">
             <sw-knowledge-search
-              group="0"
-              react-on-events="true"
-              use-api-key-connection="true">
+             group="0"
+             react-on-events="true"
+             allow-config-edit="false"
+             raise-events="true"
+             support-browser-history="true"
+             auto-dialog="false"
+             dialog-size="auto"
+             use-api-key-connection="true"
+             readonly="false"
+             show-suggestions="true"
+             suggestion-mode="text"
+             open-selected-suggestion-as-text="false"
+             suggestion-min-chars="0"
+             max-suggestions="10"
+             debounce="600"
+             search-provider="default"
+             limit="null"
+             visible="true"
+             filter="[]"
+             leading-filters="false"
+             view-mode="default"
             </sw-knowledge-search>
           </div>
 
           <div class="detail-area">
             <sw-knowledge-detail
-              group="0"
-              react-on-events="true"
-              use-api-key-connection="true">
+            group="0"
+            react-on-events="true"
+            allow-config-edit="false"
+            raise-events="true"
+            support-browser-history="true"
+            auto-dialog="false"
+            dialog-size="auto"
+            use-api-key-connection="true"
+            readonly="false"
+            initial-text-ids="[]"
+            single-expand="false"
+            expandable="true"
+            expanded="true"
+            hide-title="false"
+            auto-expand-foldouts="false"
+            show-path="true"
+            show-attachments="true"
+            show-attachments-as-menu="false"
+            load-styles="true"
+            highlight="true"
+            view-mode="default"
+            use-auth-token-for-documents="false"
+            check-host-for-internal-links="true"
+            link-fallback="false"
+            allow-rating="false"
+            rating-label="defaultRatingLabel"
+            use-navigation="false"
+            param-name="articleId"
+            allow-share-on-text="false"
+            allow-share-all="false"
+            share-targets='["facebook","twitter","mail","copyToClipboard"]'>
             </sw-knowledge-detail>
           </div>
 
@@ -113,7 +156,7 @@
 
       </div>
 
-      <!-- ⚪ RECHTE SPALTE (später zweite Widgets) -->
+      <!-- Rechte Spalte -->
       <div class="column">
         <div class="placeholder"></div>
       </div>
