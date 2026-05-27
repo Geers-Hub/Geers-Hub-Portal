@@ -25,17 +25,28 @@
     /* 🔲 Kasten */
     .widget-box {
       width: 564px;
-      max-height: 600px;       
+      max-height: 600px;
       border: 1px solid #ccc;
       border-radius: 8px;
       padding: 16px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       background: #fff;
     
-      display: flex;            
-      flex-direction: column;  
+      display: flex;
+      flex-direction: column;
+    }
+
+    .search-area {
+      flex: 0 0 auto;
+      margin-bottom: 12px;
+    }
     
-      overflow: hidden;        
+    /* 🔥 DETAIL bekommt den gesamten Rest + Scroll */
+    .detail-area {
+      flex: 1;
+      min-height: 0;        /* EXTREM wichtig für Web Components */
+      overflow-y: auto;     /* Scroll nur hier */
+      padding-right: 4px;   /* optional: nicer scrollbar spacing */
     }
     
     .widget-scroll {
@@ -55,6 +66,11 @@
     sw-knowledge-detail {
       display: block;
     }
+
+    sw-knowledge-search,
+sw-knowledge-detail {
+  display: block;
+}
   </style>
 </head>
 
@@ -63,7 +79,7 @@
   <h1>Serviceware Knowledge – Widget Testseite</h1>
 
   <div class="widget-box">
-    <div class="widget-scroll">
+    <div class="search-area">
       
     <sw-knowledge-search
       group="0"
@@ -89,6 +105,9 @@
       view-mode="default">
     </sw-knowledge-search>
 
+    </div>
+
+    <div class="detail-area">
     <sw-knowledge-detail
       group="0"
       react-on-events="true"
