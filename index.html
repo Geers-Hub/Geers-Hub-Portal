@@ -77,6 +77,16 @@
 
 <body>
 
+<div id="loginBox">
+  <h2>Passwort erforderlich</h2>
+
+  <input type="password" id="pw" placeholder="Passwort">
+  <button onclick="login()">Login</button>
+
+  <p id="error" style="color:red;"></p>
+</div>
+<div id="content">
+<div id="content" style="display:none;">
   <h1>Serviceware Knowledge – Widget Layout Test</h1>
 
   <div class="page-wrapper">
@@ -164,26 +174,38 @@
 
     </div>
   </div>
-
+</div>
   
-  <script>
-  async function login() {
+<script>
+async function login() {
 
-    const password = document.getElementById("pw").value;
+  const password = document.getElementById("pw").value;
 
-    const res = await fetch("/.netlify/functions/login", {
-      method: "POST",
-      body: JSON.stringify({ password })
-    });
+  const res = await fetch("/.netlify/functions/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ password })
+  });
 
-    if (res.ok) {
-      localStorage.setItem("auth", "true");
-      window.location.href = "/app.html";
-    } else {
-      alert("Falsches Passwort");
-    }
+  if (res.ok) {
+
+    localStorage.setItem("auth", "true");
+
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("content").style.display = "block";
+
+  } else {
+    document.getElementById("error").innerText = "Falsches Passwort";
   }
-  </script>
+}
+
+if (localStorage.getItem("auth") === "true") {
+  document.getElementById("loginBox").style.display = "none";
+  document.getElementById("content").style.display = "block";
+}
+</script>
 
 
   
