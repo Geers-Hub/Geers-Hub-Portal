@@ -11,42 +11,203 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
+      margin: 0px;
       background: #f5f5f5;
     }
+	
+	.main-container {
+	  width: 94%;
+	  margin: 0 auto 4vh auto;
 
-    h1 {
-      margin-bottom: 20px;
-    }
+	  border: 1px solid #ccc;
+	  border-radius: 0 0 8px 8px;
 
-    .page-wrapper {
-      display: flex;
-      justify-content: center;   /* zentrieren */
-    }
+	  background: #fff;
 
-    .grid {
-      display: flex;
-      gap: 20px;                /* Abstand zwischen den Spalten */
-      align-items: flex-start;
-    }
+	  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 
-    .column {
-      width: 564px;
-    }
+	  padding: 20px;
+
+	  box-sizing: border-box;
+	}
+
+	.header {
+		height: 80px;
+
+		background: linear-gradient(
+			to right,
+			#83AE00 0%,
+			#83AE00 33%,
+			#fff 100%
+		);
+
+		display: flex;
+		align-items: flex-end;
+		padding-bottom: 25px;
+		padding-left: 4%;
+		box-sizing: border-box;
+	}
+
+	.logo {
+		height: 30px;
+		width: auto;
+	}
+
+	.header-title {
+		margin-left: 2%;
+
+		font-family: Roboto, Helvetica, Arial, sans-serif;
+		font-size: 20px;
+		font-weight: 500;
+
+		color: #ffffff;
+	}
+
+	.title-bar {
+		position: relative;
+		margin: 15px 0;
+	}
+
+	.left-link {
+		position: absolute;
+		left: 1%;
+
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	.left-link img {
+		height: 32px;
+		width: auto;
+
+		cursor: pointer;
+	}
+
+	.launchpad-title {
+		text-align: center;
+		color: #555;
+
+		margin: 0;
+
+		font-size: 1.4rem;
+		font-weight: 600;
+	}
+
+	.quick-links {
+		position: absolute;
+		right: 2%;
+
+		top: 50%;
+		transform: translateY(-50%);
+
+		display: flex;
+		gap: 12px;
+	}
+
+	.quick-links img {
+		height: 32px;
+		width: auto;
+
+		cursor: pointer;
+	}
+
+	.page-wrapper {
+	  display: flex;
+	  justify-content: center;
+	}
+
+	.grid {
+	  display: flex;
+	  gap: 1%;
+	  align-items: flex-start;
+
+	  width: 100%;
+	  padding: 0 1%;
+	  box-sizing: border-box;
+	}
+
+	.column {
+	  flex: 1 1 0;
+	  min-width: 120px;
+	  max-width: 450px;
+	}
+
+	.rechts-column {
+	  flex: 1;
+	  min-width: 0;
+	}
+
+	.links-grid {
+	  display: grid;
+
+	  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	  
+	  gap: 16px;
+
+	  margin-top: 16px;
+	}
+
+	.link-card {
+		height: 200px;
+
+		border: 1px solid #ccc;
+		border-radius: 8px;
+
+		background: #f9f9f9;
+
+		display: flex;
+		flex-direction: column;
+
+		padding: 10px;
+
+		cursor: pointer;
+	}
+	
+	.link-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+	}
+
+	.link-card h3 {
+		margin: 0 0 10px 0;
+		font-size: 0.8rem;
+		text-align: center;
+		color: #555;
+	}
+
+	.link-card img {
+		width: 100%;
+		height: 100px;
+
+		object-fit: contain;
+
+		display: block;
+
+		margin-bottom: 12px;
+	}
+
+	.link-card p {
+		margin: 0;
+		line-height: 1.3;
+		font-size: 0.7rem;
+		text-align: center;
+	}
 
     /* Widget Box*/
-    .widget-box {
-      width: 564px;
-      height: 1600px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 16px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-      background: #fff;
+	.widget-box {
+	  width: 100%;
+	  height: auto;
 
-      display: flex;
-      flex-direction: column;
-    }
+	  border: 1px solid #ccc;
+	  border-radius: 8px;
+	  padding: 16px;
+
+	  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+	  background: #fff;
+
+	  display: flex;
+	  flex-direction: column;
+	}
 
     .search-area {
       flex: 0 0 auto;
@@ -55,7 +216,8 @@
 
     .detail-area {
       flex: 1;
-      min-height: 0;
+      min-height: 10px;
+	  max-height: 800px;
       overflow-y: auto;
     }
 
@@ -63,15 +225,52 @@
     sw-knowledge-detail {
       display: block;
     }
+	.quick-links-box {
+	  width: 100%;
+	  box-sizing: border-box;
+	}
 
-    /* Platzhalter rechts*/
-    .placeholder {
-      width: 564px;
-      height: 600px;
-      border: 1px dashed #bbb;
-      border-radius: 8px;
-      background: #fafafa;
-    }
+	.quick-links-grid {
+		display: grid;
+
+		grid-template-columns: repeat(4, 1fr);
+
+		gap: 12px;
+	}
+	
+	.quick-link-item {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+
+		gap: 10px;
+
+		padding: 8px;
+
+		border-radius: 6px;
+
+		cursor: pointer;
+	}
+
+	.quick-link-item:hover {
+		background: #f5f5f5;
+	}
+
+	.quick-link-item img {
+		width: 50px;
+		height: 50px;
+
+		object-fit: contain;
+	}
+
+	.quick-link-item span {
+		font-size: 0.8rem;
+		color: #555;
+	}
+	.unterer-bereich {
+	  position: relative;
+	  margin-top: 16px;
+	}
   </style>
 </head>
 
@@ -87,93 +286,374 @@
 </div>
 
 <div id="content" style="display:none;">
-  <h1>Serviceware Knowledge – Widget Layout Test</h1>
 
-  <div class="page-wrapper">
-    <div class="grid">
+	<div class="header">
+		<img src="images/geers-web-white.png" alt="Logo" class="logo">
+		
+		<div class="header-title">
+			Service Launchpad
+		</div>
+		
+	</div>
+  
+	<div class="main-container">
 
-      <!-- Linke Spalte -->
-      <div class="column">
+	<div class="title-bar">
 
-        <div class="widget-box">
+		<div class="left-link">
+			<a href="https://geers.sabio.de/" target="_blank">
+				<img src="images/Sabio.jpg"
+					 alt="Sabio"
+					 title="Sabio öffnen">
+			</a>
+		</div>
 
-          <div class="search-area">
-            <sw-knowledge-search
-             group="0"
-             react-on-events="true"
-             allow-config-edit="false"
-             raise-events="true"
-             support-browser-history="true"
-             auto-dialog="false"
-             dialog-size="auto"
-             use-api-key-connection="true"
-             readonly="false"
-             show-suggestions="false"
-             suggestion-mode="text"
-             open-selected-suggestion-as-text="false"
-             suggestion-min-chars="0"
-             max-suggestions="10"
-             debounce="600"
-             search-provider="default"
-             limit="null"
-             visible="true"
-             filter="[]"
-             leading-filters="false"
-             view-mode="default"
-            </sw-knowledge-search>
-          </div>
+		<h3 class="launchpad-title">Dein digitaler Werkzeugkasten</h3>
 
-          <div class="search-area">
+		<div class="quick-links">
+		<a href="https://outlook.office.com" target="_blank">
+			<img src="images/outlook.png" alt="Outlook" title="Dein E-Mail Postfach">
+		</a>
+		<a href="https://sonova-my.sharepoint.com/" target="_blank">
+			<img src="images/onedrive.png" alt="OneDrive" title="Dein persönlicher Cloud Speicher">
+		</a>
+		</div>
 
-          <sw-knowledge-answer group="0" react-on-events="true" allow-config-edit="false" raise-events="true" support-browser-history="true" auto-dialog="false" dialog-size="auto" use-api-key-connection="true" readonly="false" header="Answer" show-sources="true" min-words="3" min-chars="10" specific-text-ids="[]"> </sw-knowledge-answer>
-          </div>
-          <div class="detail-area">
-            <sw-knowledge-detail
-            group="0"
-            react-on-events="true"
-            allow-config-edit="false"
-            raise-events="true"
-            support-browser-history="true"
-            auto-dialog="false"
-            dialog-size="auto"
-            use-api-key-connection="true"
-            readonly="false"
-            initial-text-ids="[]"
-            single-expand="false"
-            expandable="true"
-            expanded="true"
-            hide-title="false"
-            auto-expand-foldouts="false"
-            show-path="true"
-            show-attachments="true"
-            show-attachments-as-menu="false"
-            load-styles="true"
-            highlight="true"
-            view-mode="default"
-            use-auth-token-for-documents="false"
-            check-host-for-internal-links="true"
-            link-fallback="false"
-            allow-rating="false"
-            rating-label="defaultRatingLabel"
-            use-navigation="false"
-            param-name="articleId"
-            allow-share-on-text="false"
-            allow-share-all="false"
-            share-targets='["facebook","twitter","mail","copyToClipboard"]'>
-            </sw-knowledge-detail>
-          </div>
+	</div>
 
-        </div>
+	  <div class="page-wrapper">
+		<div class="grid">
+		  <!-- Linke Spalte -->
+		  <div class="column">
+			
+			<div class="widget-box">
+			<p>Die KI hilft dir dabei, passende Inhalte schnell zu finden.</p>
+			  <div class="search-area">
+				<sw-knowledge-search
+				 group="0"
+				 react-on-events="true"
+				 allow-config-edit="false"
+				 raise-events="true"
+				 support-browser-history="true"
+				 auto-dialog="false"
+				 dialog-size="auto"
+				 use-api-key-connection="true"
+				 readonly="false"
+				 show-suggestions="false"
+				 suggestion-mode="text"
+				 open-selected-suggestion-as-text="false"
+				 suggestion-min-chars="0"
+				 max-suggestions="10"
+				 debounce="600"
+				 search-provider="default"
+				 limit="null"
+				 visible="true"
+				 filter="[]"
+				 leading-filters="false"
+				 view-mode="default"
+				</sw-knowledge-search>
+			  </div>
 
-      </div>
+			  <div class="search-area">
 
-      <!-- Rechte Spalte -->
-      <div class="column">
-        <div class="placeholder"></div>
-      </div>
+			  <sw-knowledge-answer group="0" react-on-events="true" allow-config-edit="false" raise-events="true" support-browser-history="true" auto-dialog="false" dialog-size="auto" use-api-key-connection="true" readonly="false" header="Answer" show-sources="true" min-words="3" min-chars="10" specific-text-ids="[]"> </sw-knowledge-answer>
+			  </div>
+			  <div class="detail-area">
+				<sw-knowledge-detail
+				group="0"
+				react-on-events="true"
+				allow-config-edit="false"
+				raise-events="true"
+				support-browser-history="true"
+				auto-dialog="false"
+				dialog-size="auto"
+				use-api-key-connection="true"
+				readonly="false"
+				initial-text-ids="[]"
+				single-expand="false"
+				expandable="true"
+				expanded="true"
+				hide-title="false"
+				auto-expand-foldouts="false"
+				show-path="true"
+				show-attachments="true"
+				show-attachments-as-menu="false"
+				load-styles="true"
+				highlight="true"
+				view-mode="default"
+				use-auth-token-for-documents="false"
+				check-host-for-internal-links="true"
+				link-fallback="false"
+				allow-rating="false"
+				rating-label="defaultRatingLabel"
+				use-navigation="false"
+				param-name="articleId"
+				allow-share-on-text="false"
+				allow-share-all="false"
+				share-targets='["facebook","twitter","mail","copyToClipboard"]'>
+				</sw-knowledge-detail>
+			  </div>
+			</div>
+		  </div>
+		  
+			<div class="rechts-column">
 
-    </div>
-  </div>
+				<div class="widget-box links-box">
+					<p>
+					In deinem digitalen Werkzeugkasten findest du Anwendungen und Hilfsmittel, die dich bei deiner täglichen Arbeit unterstützen.
+					</p>
+					
+					<div class="links-grid">
+
+					  <div class="link-card" onclick="window.open('https://apps.powerapps.com/play/e/default-f1ed0701-294e-404c-a13b-f81f707f845b/a/0066a026-fa80-4ab0-bf4e-ee56111683db?tenantId=f1ed0701-294e-404c-a13b-f81f707f845b&hint=215e671b-be18-4e5c-a29d-36e4cef46fbb&sourcetime=1782220278735', '_blank')">
+					  
+						    <h3>Hörlösungsfinder</h3>
+
+							<img src="images/hoerloesungsfinder.png"
+								 alt="Knowledge Integrator">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.
+							</p>
+					  </div>
+					  
+					  <div class="link-card" onclick="window.open('https://one.sonova.com/redir/170273', '_blank')">
+					  
+						    <h3>FG Dashboard</h3>
+
+							<img src="images/FG_Dashboard.png"
+								 alt="FG Dashboard">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur .<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								
+							</p>
+					  </div>
+					  
+					  <div class="link-card" onclick="window.open('https://one.sonova.com/redir/170246', '_blank')">
+					  
+						    <h3>Ampelliste</h3>
+
+							<img src="images/Ampelliste.png"
+								 alt="Ampelliste">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+
+					  
+					  <div class="link-card" onclick="window.open('https://easyorder.audia-akustik.de/', '_blank')">
+					  
+						    <h3>Audia Akustik EasyOrder</h3>
+
+							<img src="images/EasyOrderAudia.png"
+								 alt="Audia Akustik EasyOrder">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+					  
+					  <div class="link-card" onclick="window.open('https://apps.powerapps.com/play/e/default-f1ed0701-294e-404c-a13b-f81f707f845b/a/887f6cd3-8d35-4590-9cab-66db54936eb7?tenantId=f1ed0701-294e-404c-a13b-f81f707f845b?mode=New&SourceUrl=https://sonova.sharepoint.com/sites/DE-SO-deu-intranet/SitePages/tempor%C3%A4re%20Berechtigungen.aspx', '_blank')">
+					  
+						    <h3>Temporäre Berechtigung</h3>
+
+							<img src="images/TempBerechtigung.png"
+								 alt="Temporäre Berechtigung">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+							</p>
+					  </div>
+					  
+					  
+					  
+					  <div class="link-card" onclick="window.open('https://forms.office.com/Pages/ResponsePage.aspx?id=AQft8U4pTEChO_gfcH-EW8Vbrb6p2YRMsW7pP3hgEbxUMzNXUFBKWTRROTVZVllGV1RMQ00wSzI0Sy4u', '_blank')">
+					  
+						    <h3>Kleinteile Bestellung</h3>
+
+							<img src="images/KleinteileBestellung.png"
+								 alt="Kleinteile Bestellung">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+					  
+					  
+					  
+					  <div class="link-card" onclick="window.open('http://www.ido-bestellformular.de/', '_blank')">
+					  
+						    <h3>IdO Bestellformular</h3>
+
+							<img src="images/IDOBestellformular.png"
+								 alt="IdO Bestellformular">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+
+					  
+					  <div class="link-card" onclick="window.open('https://sonovaag.service-now.com/esc?sysparm_stack=no', '_blank')">
+					  
+						    <h3>Ticketportal Service Now</h3>
+
+							<img src="images/ServiceNow.png"
+								 alt="Ticketportal Service Now">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+
+					  
+					  <div class="link-card" onclick="window.open('https://sonova.print-server.net/makepage.php?p=welcome&', '_blank')">
+					  
+						    <h3>Bestellshop</h3>
+
+							<img src="images/Bestellshop.png"
+								 alt="Bestellshop">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+					  
+					  <div class="link-card" onclick="window.open('https://app.powerbi.com/groups/dabb7d4e-a7a2-4f11-9e55-f74fd589afd7/reports/2fc34b2c-f485-4099-870f-bce9f22c3e4a/ReportSectioncd86ec4c599d1d406d0b?ctid=f1ed0701-294e-404c-a13b-f81f707f845b&experience=power-bi', '_blank')">
+					  
+						    <h3>Service-Zeit Dashboard</h3>
+
+							<img src="images/ServiceZeitDashboard.png"
+								 alt="Service-Zeit Dashboard">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+					  
+					  <div class="link-card" onclick="window.open('http://de22sw26/Potenzialliste', '_blank')">
+					  
+						    <h3>Potenzial-Liste</h3>
+
+							<img src="images/PotenzialListe.png"
+								 alt="Potenzial-Liste">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+					  
+					  <div class="link-card" onclick="window.open('https://apps.powerapps.com/play/e/d9bc8990-ac41-e167-9962-60d4a36d7552/a/75ee0202-019f-4701-b508-4da020950ada?tenantId=f1ed0701-294e-404c-a13b-f81f707f845b&hint=8788857b-d18a-45f3-bfa2-7bf9a1085599&sourcetime=1772918647013', '_blank')">
+					  
+						    <h3>End Of Service App</h3>
+
+							<img src="images/End_Of_Service.png"
+								 alt="End of Service">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+					  
+					  
+					  
+					  <div class="link-card" onclick="window.open('https://learning.sonova.com/login/index.php', '_blank')">
+					  
+						    <h3>Sonova Akademie</h3>
+
+							<img src="images/SonovaAkademie.png"
+								 alt="Sonova Akademie">
+
+							<p>
+								Lorem ipsum dolor sit amet, consectetur.<br>
+								Suspendisse enim purus, ornare ac ultrices.<br>
+								Donec ultricies orci nec varius fringilla.
+							</p>
+					  </div>
+
+
+					</div>
+				</div>
+				
+				<div class="unterer-bereich">
+					<div class="widget-box quick-links-box">
+						<p>Weitere nütliche Links</p>
+
+						<div class="quick-links-grid">
+
+						<a class="quick-link-item" href="https://geschaeftskunden.dhl.de/" target="_blank">
+							<img src="images/dhl.jpg" alt="DHL öffnen">
+							<span>DHL Portal</span>
+						  </a>
+
+						  <a class="quick-link-item" href="https://sonova.sharepoint.com/sites/DE-SO-deu-intranet/Lists/FG_Liste/Stammdaten%20kurz.aspx" target="_blank">
+							<img src="images/Sharepoint-FGListe.png" alt="FG-Liste">
+							<span>Fachgeschäfts-Liste</span>
+						  </a>
+
+						  <a class="quick-link-item" href="https://one.sonova.com/redir/244415" target="_blank">
+							<img src="images/AskHR.png" alt="Ask HR">
+							<span>Ask HR</span>
+						  </a>
+
+						  <a class="quick-link-item" href="https://sonova.atoss.com/sonovaprod/html" target="_blank">
+							<img src="images/Atoss.png" alt="Teams">
+							<span>Atoss Zeiterfassung</span>
+						  </a>
+
+						  <a class="quick-link-item" href="https://www.geers.de/hoerloesungen/hoergeraete/preise/" target="_blank">
+							<img src="images/Geers.png" alt="Power Apps">
+							<span>Geers Preisübersicht</span>
+						  </a>
+
+						  <a class="quick-link-item" href="https://sonovaag.service-now.com" target="_blank">
+							<img src="images/Sharepoint-FGListe.png" alt="Serviceware">
+							<span>Serviceware</span>
+						  </a>
+
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			
+
+			
+		</div>
+	</div>
+
+
+		
+	  </div>
+	
+	</div>
+
+
+
 </div>
   
 <script>
